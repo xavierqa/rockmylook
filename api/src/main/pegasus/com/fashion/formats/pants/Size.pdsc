@@ -1,0 +1,26 @@
+{
+  "type": "record",
+  "name": "Size",
+  "namespace": "com.fashion.formats.pants",
+  "doc": "Size related to a brand",
+  "fields": [
+    {
+      "name": "size",
+      "type": "double"
+    },
+    {
+      "name": "waist",
+      "type": "double"
+    },
+    {
+    "name": "low_hip",
+      "type": "double"
+      },
+      {
+      "name": "thigh",
+      "type": "double"
+      }
+    
+    
+  ]
+}

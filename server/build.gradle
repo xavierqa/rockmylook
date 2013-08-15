@@ -1,0 +1,49 @@
+apply plugin: 'jetty'
+apply plugin: 'pegasus'
+
+ext.apiProject = project(':api')
+pegasus.main.idlOptions.addIdlItem(['com.shixa.impl'])
+
+dependencies {
+  compile project(path: ':api', configuration: 'dataTemplate')
+  compile spec.product.pegasus.r2
+  compile spec.product.pegasus.r2Jetty
+  compile spec.product.pegasus.restliServer
+  compile spec.product.pegasus.restliCommon
+  compile spec.product.pegasus.pegasusCommon
+  compile externalDependency.jedis
+  
+  restTools spec.product.pegasus.restliTools
+  compile externalDependency.log4j
+  testCompile externalDependency.testng
+  testCompile externalDependency.easymock
+  
+
+  // need to figure out why this is not already in the classpath..
+ compile files("${System.properties['java.home']}/../lib/tools.jar")
+}
+
+
+test {
+  
+   include('**/RedisTest.class')
+//   include('**/JsonGeneratorTest.class')
+//   include('**/UUIDTest.class')
+//   include('**/JedisTest.class')
+//   include('**/AuthenticationTest.class')
+ maxHeapSize = '1g'
+ 
+  useTestNG()
+
+  
+task JsonTests(type: Test) {
+   include 'server'   
+    
+   
+  }
+  
+
+
+ 
+}
+

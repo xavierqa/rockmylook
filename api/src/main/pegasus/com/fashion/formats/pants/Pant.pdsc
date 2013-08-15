@@ -1,0 +1,20 @@
+{
+  "type": "record",
+  "name": "Pant",
+  "namespace": "com.fashion.formats.pants",
+  "doc": "Size related to a brand",
+   "fields": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "brand",
+      "type": "string"
+    },
+	   {
+	   "name" : "sizelist",  
+	   "type" : { "type" : "array", "items" : "Size" } 
+	   }
+  ]
+}
