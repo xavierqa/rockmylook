@@ -1,0 +1,55 @@
+apply plugin: 'eclipse'
+apply plugin: 'java'
+pegasusVersion = "1.8.3"
+spec = [
+  "product" : [
+    "pegasus" : [
+      "data" : "com.linkedin.pegasus:data:"+pegasusVersion,
+      "generator" : "com.linkedin.pegasus:generator:"+pegasusVersion,
+      "restliClient" : "com.linkedin.pegasus:restli-client:"+pegasusVersion,
+      "restliServer" : "com.linkedin.pegasus:restli-server:"+pegasusVersion,
+      "restliTools" : "com.linkedin.pegasus:restli-tools:"+pegasusVersion,
+      "pegasusCommon" : "com.linkedin.pegasus:pegasus-common:"+pegasusVersion,
+      "restliCommon" : "com.linkedin.pegasus:restli-common:"+pegasusVersion,
+      "r2" : "com.linkedin.pegasus:r2:"+pegasusVersion,
+      "r2Jetty" : "com.linkedin.pegasus:r2-jetty:"+pegasusVersion
+      
+    ]
+  ]
+]
+
+project.ext.externalDependency = [
+ 'testng': 'org.testng:testng:6.4',
+ 'easymock': 'org.easymock:easymock:3.1',
+ 'log4j': 'log4j:log4j:1.2.15',
+ 'jedis': 'redis.clients:jedis:2.1.0'
+ 
+            
+  	
+]
+
+ 
+
+
+buildscript {
+  repositories {
+    mavenCentral()
+    mavenLocal()
+  }
+  dependencies {
+    classpath group: 'com.linkedin.pegasus', name: 'gradle-plugins', version: '1.8.3'
+  }
+}
+
+subprojects {
+  apply plugin: 'eclipse'
+  apply plugin: 'maven'
+  apply plugin: 'eclipse'
+
+  sourceCompatibility = JavaVersion.VERSION_1_6
+
+  repositories {
+    mavenCentral()
+    mavenLocal()
+  }
+}
